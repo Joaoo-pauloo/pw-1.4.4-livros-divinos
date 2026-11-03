@@ -36,15 +36,27 @@ button.result-image-change{font-size:12px;padding:2px 0;border:0;background:none
 .slot-title{grid-column:1/-1;margin:9px 0 -3px;font-size:13px;color:#e3c783;border-bottom:1px solid #29484e;padding-bottom:6px}
 .result-hint{color:#acbbc0;font-size:12px;margin-top:9px}
 @media(max-width:600px){.result-art,.result-art .icon{width:46px;height:46px;min-width:46px}.result-main{gap:7px}.result-text{min-width:155px}}
+
+.guide-tabs{display:flex;gap:8px;justify-content:center;margin:16px 8px}.guide-tabs button[aria-pressed=true]{border-color:#d9ac5b;color:#ffdc90;background:#30291d}
+.tree-panel{padding:0 12px 20px}.tree-panel h2{margin:8px 0;color:#efd08c}.tree-panel p{font-size:14px;margin:6px 0 10px}
+.tree-detail{border:1px solid #76633e;border-radius:10px;background:#142328;padding:10px 14px;min-height:64px}.tree-detail strong{color:#ffe1a1}
+.tree-scroll{overflow:auto;margin-top:12px;border:1px solid #627064;border-radius:12px;background:linear-gradient(#14212d,#0c171b)}
+.tree-map{position:relative;margin:auto;min-width:780px;isolation:isolate}.tree-map svg{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.tree-level{position:absolute;left:10px;color:#e5b65d;font-size:11px;font-weight:bold}
+.tree-book{position:absolute;width:9.8%;transform:translateX(-50%);padding:0!important;background:none!important;border:0!important;box-shadow:none!important;display:grid;justify-items:center;gap:3px;color:#dce9ea;line-height:1.1;font-size:11px}
+.tree-book .icon{width:36px;height:36px;min-width:36px;border-radius:3px;border:2px solid #7f7768}
+.tree-book span:last-child{background:#112029;border-radius:3px;padding:1px 2px}
+.tree-book[aria-pressed=true] .icon,.tree-book:focus-visible .icon{border-color:#ffe09b;box-shadow:0 0 9px #e5b25e}
+.tree-book.related .icon{border-color:#67c6b7}.tree-book[aria-pressed=true]{color:#ffe2a1}
 </style></head>
 <body><main class="shell"><header class="head"><h1>GUIA PAN GU 1.4.4</h1><div class="kicker">Forja tradicional • Uma combinação de cada vez</div></header>
-<div class="body"><div class="info"><strong id="stepLine">Passo 1 de 109 combinações</strong><span class="counts muted" id="percent">0% concluído</span></div><div class="progress"><div id="bar"></div></div>
+<nav class="guide-tabs" aria-label="Visualização do guia"><button type="button" id="forgeTab" aria-controls="forgePane" aria-pressed="true">Forja passo a passo</button><button type="button" id="treeTab" aria-controls="treePane" aria-pressed="false">Árvore de criação</button></nav><div class="body" id="forgePane"><div class="info"><strong id="stepLine">Passo 1 de 109 combinações</strong><span class="counts muted" id="percent">0% concluído</span></div><div class="progress"><div id="bar"></div></div>
 <section class="panel" id="mainPanel"><div id="recipe"></div></section>
 <div class="buttons"><button type="button" id="back">← Voltar</button><button type="button" class="primary" id="next">Já forjei — próximo →</button><button type="button" id="copy">Copiar meu progresso</button></div>
 <div class="detail"><details id="edit"><summary>⚙ Configurar quadrados da forja</summary><p class="help">Selecione a aba do nível correspondente. Conte os quadrados da esquerda para a direita, linha por linha (8 colunas na imagem da sua forja). A aba I foi conferida com sua captura do jogo. Nas demais abas os quadrados vêm da ordem sugerida pelo catálogo clássico: confirme a posição antes de gastar materiais. Você pode corrigir qualquer posição. As alterações ficam salvas.</p><div class="slotgrid" id="slotgrid"></div></details></div>
 <div class="warning"><b>Conferência importante:</b> a sequência segue as combinações do guia que montamos juntos. Como você utiliza a forja clássica sem desmontagem, confira cada receita dentro do jogo antes de gastar os materiais. Aba I conferida com sua captura. Na aba IV, Destino foi confirmado no quadrado 2 e Anarquia no quadrado 4. As posições com asterisco são estimadas.</div>
 <div class="foot" id="resourceFoot">Total planejado: 219 livros NV1 • 657 Fragmentos de Escrita Divina • 876 Livros em Branco Divinos.<br>O progresso é salvo automaticamente neste navegador.</div>
-<div class="bottomlinks"><button type="button" id="reset">Reiniciar guia</button></div></div></main>
+<div class="bottomlinks"><button type="button" id="reset">Reiniciar guia</button></div></div><section id="treePane" class="tree-panel" hidden><h2>Árvore de criação</h2><p>Do Pan Gu, no topo, até os livros NV1. Selecione um ícone para destacar os ingredientes e os livros que usam esse item.</p><div class="tree-detail" id="treeDetail" aria-live="polite"></div><div class="tree-scroll" tabindex="0" aria-label="Mapa dos livros por nível"><div class="tree-map" id="treeMap"></div></div></section></main>
 <script>
 'use strict';
 const recipes={"Resiliência": ["Poder Interno", "Escudo Primo", "Chama Kármica"], "Flor do Pessegueiro": ["Favor do Imperador", "Pessegueiro", "Sorriso da Flora"], "Estampido": ["Orgulho Paterno", "Escudo Primo", "Chama Kármica"], "Chamas Secretas": ["Poder Interno", "Chama Kármica", "Sorriso da Flora"], "Força Inigualável": ["Poder Interno", "Orgulho Paterno", "Escudo Primo"], "Chuva de Pétalas": ["Favor do Imperador", "Orgulho Paterno", "Pessegueiro"], "Lótus Vermelha": ["Sorriso da Flora", "Chama Kármica", "Pessegueiro"], "Lobo da Guerra": ["Escudo Primo", "Chama Kármica", "Rio de Sangue"], "Renascido nas Chamas": ["Sorriso da Flora", "Chama Kármica", "Lua na Noite em Chamas"], "Portal do Yang": ["Força Inigualável", "Resiliência", "Lótus Vermelha"], "Beleza Sem Forma": ["Flor do Pessegueiro", "Força Inigualável", "Chuva de Pétalas"], "Som do Arrependimento": ["Estampido", "Força Inigualável", "Lótus Vermelha"], "Coração Leal de Gelo": ["Resiliência", "Flor do Pessegueiro", "Chamas Secretas"], "Canção do Vinho": ["Força Inigualável", "Estampido", "Lótus Vermelha"], "Crepúsculo Eterno": ["Flor do Pessegueiro", "Estampido", "Chuva de Pétalas"], "Chama Rubra": ["Chamas Secretas", "Chuva de Pétalas", "Lótus Vermelha"], "Aniquilação": ["Resiliência", "Chuva de Pétalas", "Lobo da Guerra"], "Fragrância da Chuva de Sangue": ["Chuva de Pétalas", "Lótus Vermelha", "Renascido nas Chamas"], "Destino": ["Portal do Yang", "Beleza Sem Forma", "Canção do Vinho"], "Anarquia": ["Som do Arrependimento", "Canção do Vinho", "Coração Leal de Gelo"], "Tigre do Vento, Dragão do Céu": ["Portal do Yang", "Crepúsculo Eterno", "Canção do Vinho"], "Paixão": ["Coração Leal de Gelo", "Portal do Yang", "Chama Rubra"], "Ao Sul dos Rios": ["Chamas Secretas", "Flor do Pessegueiro", "Aniquilação"], "Céu que Chora": ["Som do Arrependimento", "Crepúsculo Eterno", "Fragrância da Chuva de Sangue"], "Disfarce de Sangue": ["Destino", "Anarquia", "Tigre do Vento, Dragão do Céu"], "Os Treze Guardiões": ["Paixão", "Ao Sul dos Rios", "Céu que Chora"], "Espelho do Nada": ["Paixão", "Ao Sul dos Rios", "Céu que Chora"], "Pan Gu": ["Disfarce de Sangue", "Os Treze Guardiões", "Espelho do Nada"]};
@@ -114,5 +126,51 @@ el('next').addEventListener('click',()=>{if(state.pos<steps.length){state.pos++;
 el('back').addEventListener('click',()=>{if(state.pos>0){state.pos--;save();render();window.scrollTo({top:0,behavior:'smooth'})}});
 el('copy').addEventListener('click',async()=>{const info=`Guia Pan Gu 1.4.4\nCombinações: ${state.pos}/${steps.length}\n${state.pos>=steps.length?'Pan Gu concluído':`Próxima forja: ${steps[state.pos].name} (NV${steps[state.pos].level})`}\nLivros NV1 usados: ${steps.slice(0,state.pos).filter(s=>s.level===2).length*3}/219`;try{await navigator.clipboard.writeText(info);el('copy').textContent='✓ Copiado!';setTimeout(()=>el('copy').textContent='Copiar meu progresso',1600)}catch(e){const ta=document.createElement('textarea');ta.value=info;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();el('copy').textContent='✓ Copiado!';setTimeout(()=>el('copy').textContent='Copiar meu progresso',1600)}});
 el('reset').addEventListener('click',()=>{if(confirm('Reiniciar a contagem de combinações? As posições dos quadrados serão mantidas.')){state.pos=0;state.checksByStep={};save();render();window.scrollTo({top:0,behavior:'smooth'})}});
+
+let selectedBook='Pan Gu';
+function renderTree(){
+  const map=el('treeMap'), points=new Map(), edges=[];
+  const height=6*112;
+  let labels='';
+  for(let level=6;level>=1;level--){
+    const row=names.filter(name=>(levels[name]||1)===level);
+    const y=(6-level)*112+27;
+    labels+='<span class="tree-level" style="top:'+(y-24)+'px">NV'+level+'</span>';
+    row.forEach((name,index)=>points.set(name,{x:(index+0.5)*780/row.length,y}));
+  }
+  for(const [parent,parts] of Object.entries(recipes)){
+    for(const part of new Set(parts)) edges.push({parent,part});
+  }
+  const ingredients=recipes[selectedBook]||[];
+  const parents=edges.filter(e=>e.part===selectedBook).map(e=>e.parent);
+  const related=new Set([...parents,...ingredients]);
+  function line({parent,part}){
+    const a=points.get(parent), b=points.get(part);
+    const top=a.y+37,bottom=b.y-2,mid=(top+bottom)/2;
+    return '<path d="M'+a.x+' '+top+' C'+a.x+' '+mid+' '+b.x+' '+mid+' '+b.x+' '+bottom+'"/>';
+  }
+  const active=e=>e.parent===selectedBook||e.part===selectedBook;
+  const svg='<svg viewBox="0 0 780 '+height+'" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#75613e" opacity=".47">'+edges.filter(e=>!active(e)).map(line).join('')+'</g><g fill="none" stroke="#efbd66" stroke-width="2.5">'+edges.filter(active).map(line).join('')+'</g></svg>';
+  map.style.height=height+'px';
+  map.innerHTML=svg+labels+[...points].map(([name,p])=>'<button type="button" class="tree-book '+(related.has(name)?'related':'')+'" aria-label="'+safe(name)+'" aria-pressed="'+(selectedBook===name)+'" data-book="'+safe(name)+'" style="left:'+p.x/780*100+'%;top:'+p.y+'px">'+itemIcon(name)+'<span>'+safe(name)+'</span></button>').join('');
+  el('treeDetail').innerHTML='<strong>'+safe(selectedBook)+' · NV'+(levels[selectedBook]||1)+'</strong><br>'+(ingredients.length?'Ingredientes: '+ingredients.map(safe).join(' · '):'Livro base NV1')+'<br>'+(parents.length?'Usado para criar: '+parents.map(safe).join(' · '):'Resultado final do guia');
+}
+el('treeMap').addEventListener('click',event=>{
+  const button=event.target.closest('button[data-book]');
+  if(!button)return;
+  selectedBook=button.dataset.book;
+  renderTree();
+  el('treeMap').querySelector('[aria-pressed="true"]').focus({preventScroll:true});
+});
+function showTree(open){
+  el('forgePane').hidden=open;
+  el('treePane').hidden=!open;
+  el('forgeTab').setAttribute('aria-pressed',String(!open));
+  el('treeTab').setAttribute('aria-pressed',String(open));
+  if(open)renderTree();
+}
+el('forgeTab').addEventListener('click',()=>showTree(false));
+el('treeTab').addEventListener('click',()=>showTree(true));
+
 slots();render();
 </script></body></html>
