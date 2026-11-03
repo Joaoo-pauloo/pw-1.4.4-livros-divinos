@@ -48,9 +48,10 @@ button.result-image-change{font-size:12px;padding:2px 0;border:0;background:none
 .tree-book span:last-child{background:#112029;border-radius:3px;padding:1px 2px}
 .tree-book[aria-pressed=true] .icon,.tree-book:focus-visible .icon{border-color:#ffe09b;box-shadow:0 0 9px #e5b25e}
 .tree-book.related .icon{border-color:#67c6b7}.tree-book[aria-pressed=true]{color:#ffe2a1}
+.guide-tabs{display:grid;grid-template-columns:1fr 1fr;padding:0 12px}.guide-tabs button{min-height:44px;white-space:normal}.guide-tabs #treeTab{background:#304638;border:2px solid #d9ac5b;color:#fff0be;font-weight:700}
 </style></head>
 <body><main class="shell"><header class="head"><h1>GUIA PAN GU 1.4.4</h1><div class="kicker">Forja tradicional • Uma combinação de cada vez</div></header>
-<nav class="guide-tabs" aria-label="Visualização do guia"><button type="button" id="forgeTab" aria-controls="forgePane" aria-pressed="true">Forja passo a passo</button><button type="button" id="treeTab" aria-controls="treePane" aria-pressed="false">Árvore de criação</button></nav><div class="body" id="forgePane"><div class="info"><strong id="stepLine">Passo 1 de 109 combinações</strong><span class="counts muted" id="percent">0% concluído</span></div><div class="progress"><div id="bar"></div></div>
+<nav class="guide-tabs" aria-label="Visualização do guia"><button type="button" id="forgeTab" aria-controls="forgePane" aria-pressed="true">Forja passo a passo</button><button type="button" id="treeTab" aria-controls="treePane" aria-pressed="false">🌳 Abrir árvore de criação</button></nav><div class="body" id="forgePane"><div class="info"><strong id="stepLine">Passo 1 de 109 combinações</strong><span class="counts muted" id="percent">0% concluído</span></div><div class="progress"><div id="bar"></div></div>
 <section class="panel" id="mainPanel"><div id="recipe"></div></section>
 <div class="buttons"><button type="button" id="back">← Voltar</button><button type="button" class="primary" id="next">Já forjei — próximo →</button><button type="button" id="copy">Copiar meu progresso</button></div>
 <div class="detail"><details id="edit"><summary>⚙ Configurar quadrados da forja</summary><p class="help">Selecione a aba do nível correspondente. Conte os quadrados da esquerda para a direita, linha por linha (8 colunas na imagem da sua forja). A aba I foi conferida com sua captura do jogo. Nas demais abas os quadrados vêm da ordem sugerida pelo catálogo clássico: confirme a posição antes de gastar materiais. Você pode corrigir qualquer posição. As alterações ficam salvas.</p><div class="slotgrid" id="slotgrid"></div></details></div>
@@ -173,4 +174,5 @@ el('forgeTab').addEventListener('click',()=>showTree(false));
 el('treeTab').addEventListener('click',()=>showTree(true));
 
 slots();render();
+if(location.hash==='#arvore')showTree(true);
 </script></body></html>
