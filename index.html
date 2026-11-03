@@ -42,7 +42,7 @@ button.result-image-change{font-size:12px;padding:2px 0;border:0;background:none
 <section class="panel" id="mainPanel"><div id="recipe"></div></section>
 <div class="buttons"><button type="button" id="back">← Voltar</button><button type="button" class="primary" id="next">Já forjei — próximo →</button><button type="button" id="copy">Copiar meu progresso</button></div>
 <div class="detail"><details id="edit"><summary>⚙ Configurar quadrados da forja</summary><p class="help">Selecione a aba do nível correspondente. Conte os quadrados da esquerda para a direita, linha por linha (8 colunas na imagem da sua forja). A aba I foi conferida com sua captura do jogo. Nas demais abas os quadrados vêm da ordem sugerida pelo catálogo clássico: confirme a posição antes de gastar materiais. Você pode corrigir qualquer posição. As alterações ficam salvas.</p><div class="slotgrid" id="slotgrid"></div></details></div>
-<div class="warning"><b>Conferência importante:</b> a sequência segue as combinações do guia que montamos juntos. Como você utiliza a forja clássica sem desmontagem, confira cada receita dentro do jogo antes de gastar os materiais. Aba I conferida com sua captura. Abas II–VII: posições estimadas a partir do guia clássico, não confirmadas no seu servidor.</div>
+<div class="warning"><b>Conferência importante:</b> a sequência segue as combinações do guia que montamos juntos. Como você utiliza a forja clássica sem desmontagem, confira cada receita dentro do jogo antes de gastar os materiais. Aba I conferida com sua captura. Destino confirmado na aba IV, quadrado 2. As posições com asterisco são estimadas.</div>
 <div class="foot" id="resourceFoot">Total planejado: 219 livros NV1 • 657 Fragmentos de Escrita Divina • 876 Livros em Branco Divinos.<br>O progresso é salvo automaticamente neste navegador.</div>
 <div class="bottomlinks"><button type="button" id="reset">Reiniciar guia</button></div></div></main>
 <script>
@@ -53,18 +53,18 @@ const forgeIcons={"1":["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCA
 const baseBooks={"Poder Interno": 27, "Orgulho Paterno": 30, "Escudo Primo": 31, "Chama Kármica": 43, "Sorriso da Flora": 32, "Pessegueiro": 33, "Favor do Imperador": 19, "Rio de Sangue": 2, "Lua na Noite em Chamas": 2};
 const levels={"Resiliência": 2, "Flor do Pessegueiro": 2, "Estampido": 2, "Chamas Secretas": 2, "Força Inigualável": 2, "Chuva de Pétalas": 2, "Lótus Vermelha": 2, "Lobo da Guerra": 2, "Renascido nas Chamas": 2, "Portal do Yang": 3, "Beleza Sem Forma": 3, "Som do Arrependimento": 3, "Coração Leal de Gelo": 3, "Canção do Vinho": 3, "Crepúsculo Eterno": 3, "Chama Rubra": 3, "Aniquilação": 3, "Fragrância da Chuva de Sangue": 3, "Destino": 4, "Anarquia": 4, "Tigre do Vento, Dragão do Céu": 4, "Paixão": 4, "Ao Sul dos Rios": 4, "Céu que Chora": 4, "Disfarce de Sangue": 5, "Os Treze Guardiões": 5, "Espelho do Nada": 5, "Pan Gu": 6};
 const key='pw-pangu-144-v2';
-const defaultSlots={"Portal do Yang":4,"Estampido":6,"Pan Gu":8,"Lobo da Guerra":8,"Força Inigualável":1,"Lua na Noite em Chamas":9,"Crepúsculo Eterno":2,"Pessegueiro":2,"Aniquilação":8,"Escudo Primo":1,"Lótus Vermelha":3,"Renascido nas Chamas":9,"Coração Leal de Gelo":7,"Espelho do Nada":8,"Destino":4,"Resiliência":4,"Beleza Sem Forma":5,"Sorriso da Flora":7,"Flor do Pessegueiro":5,"Disfarce de Sangue":2,"Chamas Secretas":7,"Orgulho Paterno":6,"Chama Kármica":3,"Som do Arrependimento":6,"Fragrância da Chuva de Sangue":9,"Poder Interno":4,"Chuva de Pétalas":2,"Canção do Vinho":1,"Ao Sul dos Rios":8,"Chama Rubra":3,"Céu que Chora":9,"Rio de Sangue":8,"Favor do Imperador":5,"Anarquia":6,"Os Treze Guardiões":7,"Paixão":3,"Tigre do Vento, Dragão do Céu":1};
+const defaultSlots={"Portal do Yang":4,"Estampido":6,"Pan Gu":8,"Lobo da Guerra":8,"Força Inigualável":1,"Lua na Noite em Chamas":9,"Crepúsculo Eterno":2,"Pessegueiro":2,"Aniquilação":8,"Escudo Primo":1,"Lótus Vermelha":3,"Renascido nas Chamas":9,"Coração Leal de Gelo":7,"Espelho do Nada":8,"Destino":2,"Resiliência":4,"Beleza Sem Forma":5,"Sorriso da Flora":7,"Flor do Pessegueiro":5,"Disfarce de Sangue":2,"Chamas Secretas":7,"Orgulho Paterno":6,"Chama Kármica":3,"Som do Arrependimento":6,"Fragrância da Chuva de Sangue":9,"Poder Interno":4,"Chuva de Pétalas":2,"Canção do Vinho":1,"Ao Sul dos Rios":8,"Chama Rubra":3,"Céu que Chora":9,"Rio de Sangue":8,"Favor do Imperador":5,"Anarquia":6,"Os Treze Guardiões":7,"Paixão":3,"Tigre do Vento, Dragão do Céu":1};
 const names=[...Object.keys(baseBooks),...Object.keys(levels)];
 let state={pos:0,checksByStep:{},slots:{...defaultSlots},images:{}};
 try{const v=JSON.parse(localStorage.getItem(key));if(v&&Number.isInteger(v.pos)){state.pos=Math.min(steps.length,Math.max(0,v.pos));state.checksByStep=v.checksByStep||{};
 if(Array.isArray(v.checked)&&!state.checksByStep[state.pos]) state.checksByStep[state.pos]=v.checked.slice(0,3);
-state.slots={...defaultSlots,...(v.slots||{})};state.images=v.images||{};if(v.slotVersion!==3){state.slots['Poder Interno']=4;state.slots['Orgulho Paterno']=6;state.slots['Escudo Primo']=1;}state.slotVersion=3}}catch(e){}
-function save(){try{state.slotVersion=3;localStorage.setItem(key,JSON.stringify(state))}catch(e){}}
+state.slots={...defaultSlots,...(v.slots||{})};state.images=v.images||{};if((v.slotVersion||0)<3){state.slots['Poder Interno']=4;state.slots['Orgulho Paterno']=6;state.slots['Escudo Primo']=1;}if((v.slotVersion||0)<4&&Number(state.slots.Destino)===4) state.slots.Destino=2;}}catch(e){}
+function save(){try{state.slotVersion=4;localStorage.setItem(key,JSON.stringify(state))}catch(e){}}
 function el(id){return document.getElementById(id)}
 function safe(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')}
 const roman=['','I','II','III','IV','V','VI','VII'];
 function slotTxt(n){const q=Number(state.slots[n]);return q>=1&&q<=40?'Quadrado '+q:'Verificar posição'}
-function posTxt(n){const lv=levels[n]||1;return 'Aba '+roman[lv===6?7:lv]+' • '+slotTxt(n)+(lv===1?'':' *')}
+function posTxt(n){const lv=levels[n]||1;return 'Aba '+roman[lv===6?7:lv]+' • '+slotTxt(n)+(lv===1||(n==='Destino'&&Number(state.slots[n])===2)?'':' *')}
 // Each captured tab is stored in forge order, from left to right, eight cells per row.
 function itemIcon(name){
   const level=levels[name]||1;
