@@ -38,33 +38,24 @@ button.result-image-change{font-size:12px;padding:2px 0;border:0;background:none
 @media(max-width:600px){.result-art,.result-art .icon{width:46px;height:46px;min-width:46px}.result-main{gap:7px}.result-text{min-width:155px}}
 
 .guide-tabs{display:flex;gap:8px;justify-content:center;margin:16px 8px}.guide-tabs button[aria-pressed=true]{border-color:#d9ac5b;color:#ffdc90;background:#30291d}
- .tree-panel{padding:4px 22px 24px}.tree-panel h2{margin:8px 0;color:#efd08c;font-size:24px}.tree-panel>p{font-size:14px;color:#a8bdc0;line-height:1.6;margin:4px 0 16px}
-.tree-detail{border:1px solid #476367;border-radius:12px;background:#132a30;padding:16px 18px;display:grid;gap:12px}
-.tree-detail strong{color:#ffe1a1;font-size:19px}.tree-detail-title{display:flex;align-items:center;gap:12px}.tree-detail-title .icon{width:44px;height:44px;min-width:44px}
-.tree-detail small{color:#9fb7ba;display:block;margin-top:3px}.tree-relation{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.tree-relation-label{font-size:12px;color:#adc3c5;width:100%;text-transform:uppercase;letter-spacing:1px}
-.tree-relation button{display:flex;align-items:center;gap:7px;padding:7px 10px;font-size:12px;background:#1a343a;border:1px solid #37585f;border-radius:8px}.tree-relation .icon{width:26px;height:26px;min-width:26px;border-radius:4px}
-.tree-scroll{overflow:auto;margin-top:18px;border:1px solid #304b53;border-radius:12px;background:#0c1c23}
-.tree-map{position:relative;width:1080px;min-width:1080px;margin:auto;isolation:isolate;background:repeating-linear-gradient(to bottom,#10232b 0px,#10232b 112px,#0c1c23 112px,#0c1c23 148px)}
-.tree-map svg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.tree-level{position:absolute;left:14px;color:#a3babf;font-size:11px;font-weight:bold;letter-spacing:1px;z-index:1}
-.tree-book{position:absolute;width:100px;height:88px;box-sizing:border-box;transform:translateX(-50%);padding:8px 4px!important;background:#172d35!important;border:1px solid #38525c!important;border-radius:10px!important;box-shadow:none!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#bcd0d4;line-height:1.15;font-size:11px;z-index:1;opacity:.55}
-.tree-book .icon{width:34px;height:34px;min-width:34px;border-radius:5px;border:1px solid #8d9f9f}
-.tree-book span:last-child{padding:0 2px;max-width:92px;white-space:normal}
-.tree-book.related{opacity:1;border-color:#66afa6!important;background:#163c40!important;color:#e2f1ef}
-.tree-book[aria-pressed=true]{opacity:1;border:2px solid #efbd66!important;background:#3a3323!important;color:#ffe2a1;box-shadow:0 0 0 3px #efbd661a!important}
-.tree-book:hover,.tree-book:focus-visible{opacity:1;outline:2px solid #87cfc4;outline-offset:3px}
-.tree-legend{display:flex;gap:16px;flex-wrap:wrap;color:#9bb3b9;font-size:12px;margin:12px 0 0}.tree-legend span:first-child{color:#efbd66}.tree-legend span:nth-child(2){color:#72c5b9}
-@media(max-width:600px){.tree-panel{padding:4px 12px 18px}.tree-detail{padding:12px}.tree-detail strong{font-size:17px}}
+.tree-panel{padding:4px 22px 28px}.tree-panel h2{margin:8px 0;color:#efd08c;font-size:24px}.tree-panel>p{font-size:14px;color:#a8bdc0;line-height:1.6;margin:4px 0 16px}
+.recipe-browser{display:grid;grid-template-columns:1fr 74px 1fr 74px 1fr;align-items:stretch;gap:0;border:1px solid #39555c;border-radius:14px;background:#0c1c23;padding:18px}
+.recipe-column{min-width:0;border:1px solid #2d4a51;border-radius:12px;background:#122830;padding:14px;display:flex;flex-direction:column;gap:9px}
+.recipe-column h3{margin:0 0 3px;color:#9fc7c5;font-size:12px;letter-spacing:1px;text-transform:uppercase}.recipe-column.selected{border:2px solid #e7b458;background:#322d20;justify-content:center}.recipe-column.selected h3{color:#f4ca78}
+.flow-arrow{display:grid;place-items:center;color:#e7b458;font-size:30px;font-weight:bold}.book-card{width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:9px 10px!important;border:1px solid #3b5d64!important;border-radius:9px!important;background:#19353c!important;color:#e5eeee!important;box-shadow:none!important;font-size:13px}.book-card:hover,.book-card:focus-visible{border-color:#75c7bb!important;background:#20464c!important}.book-card .icon{width:38px;height:38px;min-width:38px;border-radius:5px}.book-card b{display:block}.book-card small{display:block;color:#9eb7ba;margin-top:3px}.selected-book{display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;color:#ffe1a1}.selected-book .icon{width:64px;height:64px;min-width:64px;border:2px solid #e7b458;border-radius:8px}.selected-book strong{font-size:18px}.selected-book small{color:#d6c18f}
+.empty-relation{margin:auto;color:#82999e;text-align:center;font-size:13px;line-height:1.5}.book-catalog{margin-top:20px;display:grid;gap:14px}.level-group{border:1px solid #29464d;border-radius:12px;background:#102229;padding:13px}.level-group h3{margin:0 0 10px;color:#e7b458;font-size:14px}.level-books{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:8px}.level-books .book-card[aria-pressed=true]{border:2px solid #e7b458!important;background:#3a3323!important;color:#ffe1a1!important}
+@media(max-width:760px){.tree-panel{padding:4px 12px 18px}.recipe-browser{grid-template-columns:1fr;padding:12px;gap:8px}.flow-arrow{height:28px;transform:rotate(90deg)}.level-books{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.level-books{grid-template-columns:1fr}}
 .guide-tabs{display:grid;grid-template-columns:1fr 1fr;padding:0 12px}.guide-tabs button{min-height:44px;white-space:normal}.guide-tabs #treeTab{background:#304638;border:2px solid #d9ac5b;color:#fff0be;font-weight:700}
 </style></head>
-<body><main class="shell"><header class="head"><h1>GUIA PAN GU 1.4.4</h1><div class="kicker">Forja tradicional • Ícones revisados • 03/11/2026</div></header>
-<nav class="guide-tabs" aria-label="Visualização do guia"><button type="button" id="forgeTab" aria-controls="forgePane" aria-pressed="true">Forja passo a passo</button><button type="button" id="treeTab" aria-controls="treePane" aria-pressed="false">🌳 Abrir árvore de criação</button></nav><div class="body" id="forgePane"><div class="info"><strong id="stepLine">Passo 1 de 109 combinações</strong><span class="counts muted" id="percent">0% concluído</span></div><div class="progress"><div id="bar"></div></div>
+<body><main class="shell"><header class="head"><h1>GUIA PAN GU 1.4.4</h1><div class="kicker">Forja tradicional • Árvore sem linhas • 04/11/2026</div></header>
+<nav class="guide-tabs" aria-label="Visualização do guia"><button type="button" id="forgeTab" aria-controls="forgePane" aria-pressed="true">Forja passo a passo</button><button type="button" id="treeTab" aria-controls="treePane" aria-pressed="false">🌳 Árvore limpa — sem linhas</button></nav><div class="body" id="forgePane"><div class="info"><strong id="stepLine">Passo 1 de 109 combinações</strong><span class="counts muted" id="percent">0% concluído</span></div><div class="progress"><div id="bar"></div></div>
 <section class="panel" id="mainPanel"><div id="recipe"></div></section>
 <div class="buttons"><button type="button" id="back">← Voltar</button><button type="button" class="primary" id="next">Já forjei — próximo →</button><button type="button" id="copy">Copiar meu progresso</button></div>
 <div class="detail"><details id="edit"><summary>⚙ Configurar quadrados da forja</summary><p class="help">Selecione a aba do nível correspondente. Conte os quadrados da esquerda para a direita, linha por linha (8 colunas na imagem da sua forja). A aba I foi conferida com sua captura do jogo. Os ícones foram comparados com o catálogo ilustrado do GuiaPW e associados às posições das suas capturas. Alterar o quadrado muda somente a indicação de posição do livro. Você pode corrigir qualquer posição. As alterações ficam salvas.</p><div class="slotgrid" id="slotgrid"></div></details></div>
 <div class="warning"><b>Conferência importante:</b> a sequência segue as combinações do guia que montamos juntos. Como você utiliza a forja clássica sem desmontagem, confira cada receita dentro do jogo antes de gastar os materiais. Ícones dos 37 livros conferidos com o catálogo ilustrado do GuiaPW e suas capturas da forja. Asterisco indica posição personalizada. Fonte: guiapw.forumbrasil.net/t10-guia-de-livros-divinos.</div>
 <div class="foot" id="resourceFoot">Total planejado: 219 livros NV1 • 657 Fragmentos de Escrita Divina • 876 Livros em Branco Divinos.<br>O progresso é salvo automaticamente neste navegador.</div>
-<div class="bottomlinks"><button type="button" id="reset">Reiniciar guia</button></div></div><section id="treePane" class="tree-panel" hidden><h2>Árvore de criação</h2><p>Selecione um livro para ver sua receita e as ligações diretas. Os livros estão organizados por nível, do Pan Gu aos ingredientes básicos.</p><div class="tree-detail" id="treeDetail" aria-live="polite"></div><div class="tree-legend"><span>● Livro selecionado</span><span>● Ingredientes e próximos livros</span><span>Arraste a barra inferior para explorar</span></div><div class="tree-scroll" tabindex="0" aria-label="Mapa dos livros por nível"><div class="tree-map" id="treeMap"></div></div></section></main>
+<div class="bottomlinks"><button type="button" id="reset">Reiniciar guia</button></div></div><section id="treePane" class="tree-panel" hidden><h2>Árvore de criação</h2><p>Escolha um livro para visualizar sua receita de forma limpa. Os ingredientes aparecem à esquerda e os livros seguintes à direita.</p><div class="recipe-browser" id="treeDetail" aria-live="polite"></div><div class="book-catalog" id="treeMap" aria-label="Catálogo dos livros por nível"></div></section></main>
 <script>
 'use strict';
 const recipes={"Resiliência": ["Poder Interno", "Escudo Primo", "Chama Kármica"], "Flor do Pessegueiro": ["Favor do Imperador", "Pessegueiro", "Sorriso da Flora"], "Estampido": ["Orgulho Paterno", "Escudo Primo", "Chama Kármica"], "Chamas Secretas": ["Poder Interno", "Chama Kármica", "Sorriso da Flora"], "Força Inigualável": ["Poder Interno", "Orgulho Paterno", "Escudo Primo"], "Chuva de Pétalas": ["Favor do Imperador", "Orgulho Paterno", "Pessegueiro"], "Lótus Vermelha": ["Sorriso da Flora", "Chama Kármica", "Pessegueiro"], "Lobo da Guerra": ["Escudo Primo", "Chama Kármica", "Rio de Sangue"], "Renascido nas Chamas": ["Sorriso da Flora", "Chama Kármica", "Lua na Noite em Chamas"], "Portal do Yang": ["Força Inigualável", "Resiliência", "Lótus Vermelha"], "Beleza Sem Forma": ["Flor do Pessegueiro", "Força Inigualável", "Chuva de Pétalas"], "Som do Arrependimento": ["Estampido", "Força Inigualável", "Lótus Vermelha"], "Coração Leal de Gelo": ["Resiliência", "Flor do Pessegueiro", "Chamas Secretas"], "Canção do Vinho": ["Força Inigualável", "Estampido", "Lótus Vermelha"], "Crepúsculo Eterno": ["Flor do Pessegueiro", "Estampido", "Chuva de Pétalas"], "Chama Rubra": ["Chamas Secretas", "Chuva de Pétalas", "Lótus Vermelha"], "Aniquilação": ["Resiliência", "Chuva de Pétalas", "Lobo da Guerra"], "Fragrância da Chuva de Sangue": ["Chuva de Pétalas", "Lótus Vermelha", "Renascido nas Chamas"], "Destino": ["Portal do Yang", "Beleza Sem Forma", "Canção do Vinho"], "Anarquia": ["Som do Arrependimento", "Canção do Vinho", "Coração Leal de Gelo"], "Tigre do Vento, Dragão do Céu": ["Portal do Yang", "Crepúsculo Eterno", "Canção do Vinho"], "Paixão": ["Coração Leal de Gelo", "Portal do Yang", "Chama Rubra"], "Ao Sul dos Rios": ["Chamas Secretas", "Flor do Pessegueiro", "Aniquilação"], "Céu que Chora": ["Som do Arrependimento", "Crepúsculo Eterno", "Fragrância da Chuva de Sangue"], "Disfarce de Sangue": ["Destino", "Anarquia", "Tigre do Vento, Dragão do Céu"], "Os Treze Guardiões": ["Paixão", "Ao Sul dos Rios", "Céu que Chora"], "Espelho do Nada": ["Paixão", "Ao Sul dos Rios", "Céu que Chora"], "Pan Gu": ["Disfarce de Sangue", "Os Treze Guardiões", "Espelho do Nada"]};
@@ -140,41 +131,33 @@ el('reset').addEventListener('click',()=>{if(confirm('Reiniciar a contagem de co
 
 let selectedBook='Pan Gu';
 function renderTree(){
-  const map=el('treeMap'), points=new Map(), edges=[];
-  const width=1080, rowHeight=148, height=6*rowHeight;
-  let labels='';
-  for(let level=6;level>=1;level--){
-    const row=names.filter(name=>(levels[name]||1)===level);
-    const y=(6-level)*rowHeight+18;
-    labels+='<span class="tree-level" style="top:'+(y+6)+'px">NV'+level+'</span>';
-    row.forEach((name,index)=>points.set(name,{x:74+(index+0.5)*(width-90)/row.length,y}));
-  }
+  const map=el('treeMap'), edges=[];
   for(const [parent,parts] of Object.entries(recipes)){
     for(const part of new Set(parts)) edges.push({parent,part});
   }
   const ingredients=recipes[selectedBook]||[];
   const parents=edges.filter(edge=>edge.part===selectedBook).map(edge=>edge.parent);
-  const related=new Set([...parents,...ingredients]);
-  function line({parent,part}){
-    const a=points.get(parent), b=points.get(part);
-    const top=a.y+88,bottom=b.y,mid=(top+bottom)/2;
-    const color=parent===selectedBook?'#efbd66':'#72c5b9';
-    return '<path d="M'+a.x+' '+top+' C'+a.x+' '+mid+' '+b.x+' '+mid+' '+b.x+' '+bottom+'" stroke="'+color+'"/><circle cx="'+b.x+'" cy="'+bottom+'" r="3" fill="'+color+'"/>';
+  function card(name){
+    return '<button type="button" class="book-card" data-book="'+safe(name)+'" aria-pressed="'+(selectedBook===name)+'">'+itemIcon(name)+'<span><b>'+safe(name)+'</b><small>Livro NV'+(levels[name]||1)+'</small></span></button>';
   }
-  const svg='<svg viewBox="0 0 '+width+' '+height+'" aria-hidden="true"><g fill="none" stroke-width="2.2">'+edges.filter(edge=>edge.parent===selectedBook||edge.part===selectedBook).map(line).join('')+'</g></svg>';
-  map.style.height=height+'px';
-  map.innerHTML=svg+labels+[...points].map(([name,p])=>'<button type="button" class="tree-book '+(related.has(name)?'related':'')+'" aria-label="'+safe(name)+'" aria-pressed="'+(selectedBook===name)+'" data-book="'+safe(name)+'" style="left:'+p.x+'px;top:'+p.y+'px">'+itemIcon(name)+'<span>'+safe(name)+'</span></button>').join('');
-  function relation(label,books){
-    return '<div class="tree-relation"><span class="tree-relation-label">'+label+'</span>'+books.map(name=>'<button type="button" data-book="'+safe(name)+'">'+itemIcon(name)+safe(name)+'</button>').join('')+'</div>';
+  function column(title,books,empty){
+    return '<div class="recipe-column"><h3>'+title+'</h3>'+(books.length?books.map(card).join(''):'<div class="empty-relation">'+empty+'</div>')+'</div>';
   }
-  el('treeDetail').innerHTML='<div class="tree-detail-title">'+itemIcon(selectedBook)+'<div><strong>'+safe(selectedBook)+'</strong><small>Livro NV'+(levels[selectedBook]||1)+' · '+safe(posTxt(selectedBook))+'</small></div></div>'+(ingredients.length?relation('Ingredientes para criar',ingredients):'<small>Livro básico. Fabricado com Fragmentos de Escrita Divina e Livros em Branco Divinos.</small>')+(parents.length?relation('Usado para criar',parents):'<small>Resultado final do guia</small>');
+  el('treeDetail').innerHTML=column('Ingredientes',ingredients,'Livro básico NV1<br>Fragmentos + Livros em Branco')+'<div class="flow-arrow">→</div><div class="recipe-column selected"><h3>Livro selecionado</h3><div class="selected-book">'+itemIcon(selectedBook)+'<strong>'+safe(selectedBook)+'</strong><small>NV'+(levels[selectedBook]||1)+' · '+safe(posTxt(selectedBook))+'</small></div></div><div class="flow-arrow">→</div>'+column('Usado para criar',parents,'Resultado final do guia');
+  let catalog='';
+  for(let level=6;level>=1;level--){
+    const row=names.filter(name=>(levels[name]||1)===level);
+    catalog+='<section class="level-group"><h3>Livros NV'+level+'</h3><div class="level-books">'+row.map(card).join('')+'</div></section>';
+  }
+  map.innerHTML=catalog;
 }
 function selectTreeBook(event){
   const button=event.target.closest('button[data-book]');
   if(!button)return;
   selectedBook=button.dataset.book;
   renderTree();
-  el('treeMap').querySelector('[aria-pressed="true"]').focus({preventScroll:true});
+  const selected=el('treeMap').querySelector('[aria-pressed="true"]');
+  if(selected)selected.focus({preventScroll:true});
 }
 el('treeDetail').addEventListener('click',selectTreeBook);
 el('treeMap').addEventListener('click',selectTreeBook);
